@@ -2,7 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from analysis.ipl_delivery_cleanup import cleanup, get_column_names
-from api.bowler_analysis import router as bowler_analysis_routes
+from api.bowler import bowler_routes
+from api.team import router as team_analysis_routes
 
 # init app
 app = FastAPI()
@@ -37,5 +38,5 @@ def get_column_names_controller():
     return JSONResponse(status_code=200, content=columns)
 
 
-app.include_router(bowler_analysis_routes)
-# app.include_router()
+app.include_router(bowler_routes)
+app.include_router(team_analysis_routes)
