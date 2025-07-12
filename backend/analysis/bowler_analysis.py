@@ -25,3 +25,9 @@ def get_teamwise_bowlers_analysis(team_name: str) -> List[str]:
     team = team_group.get_group(team_name)
     bowlers = team["bowler"].unique().tolist()
     return bowlers
+
+
+def get_bowler_stat_analysis(bowler_name):
+    bowlers_group = df.groupby("bowler")
+    bowler_data = bowlers_group.get_group(bowler_name)
+    print(bowler_data)
